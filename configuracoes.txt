@@ -1,0 +1,13 @@
+Exemplo de Usuário Padrão:
+    Email: "ni@ni"
+    Senha: "qwer"
+
+Exemplo de Usuário Crítico(Administrador):
+    Email: "rubens@123"
+    Senha: "1234"
+
+Para rodar o projeto precisa:
+    -Rodar o servidor do Mongodb:
+        -comando no CMD: "mongod"
+    -Rodar o projeto:
+        -comando no CMD(na pasta do projeto): nodemon app.js
