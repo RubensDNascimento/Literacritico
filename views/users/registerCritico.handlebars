@@ -3,9 +3,9 @@
 {{else}}
 
 {{/each}}
-<h3>Criar uma conta para um novo Crítico</h3>
-<div class="card">
+<div class="card bg-light">
     <div class="card-body">
+        <h3>Criar uma conta para um novo Crítico</h3>
         <form action="/users/register" method="post">
             <label for="nome">Nome:</label>
                 <input type="text" name="nome" class="form-constrol" required>
@@ -17,7 +17,7 @@
                 <input type="password" name="senha2" class="form-constrol" required>
 
             <input type="hidden" name="eCritico" value="1" required>
-            <button type="submit" class="btn btn-success mt-4">Criar conta</button>
+            <button type="submit" class="btn"  style="background-color: #00CC99;">Criar conta</button>
         </form>
     </div>
 </div>

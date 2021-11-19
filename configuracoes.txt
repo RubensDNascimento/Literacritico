@@ -11,3 +11,6 @@ Para rodar o projeto precisa:
         -comando no CMD: "mongod"
     -Rodar o projeto:
         -comando no CMD(na pasta do projeto): nodemon app.js
+
+Informações extras:
+    -Caminho para arquivos .md: "public\md"

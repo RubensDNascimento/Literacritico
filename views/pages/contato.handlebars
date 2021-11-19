@@ -1,26 +1,28 @@
-<h1>Contato</h1>
-<div>
-    <h3>Envie uma mensagem</h3>
-    {{msg}}
-    <form method="POST" action="send">
-        <p>
-            <label>Nome:</label>
-            <input type="text" name="nome">
-        </p>
-        <p>
-            <label>Email:</label>
-            <input type="email" name="email">
-        </p>
-        <p>
-            <label>Telefone:</label>
-            <input type="text" name="telefone">
-        </p>
-        <p>
-            <label>Mensagem:</label>
-            <textarea name="message" rows="5"></textarea>
-        </p>
-        <p>
-            <button class="btn btn-success" type="submit">Enviar</button>
-        </p>
-    </form>
+<div class="card bg-light">
+    <div class="card-body">
+        <h1 >Contato</h1>
+        <h3>Envie uma mensagem</h3>
+        {{msg}}
+        <form method="POST" action="send">
+            <p>
+                <label>Nome:</label>
+                <input type="text" name="nome">
+            </p>
+            <p>
+                <label>Email:</label>
+                <input type="email" name="email">
+            </p>
+            <p>
+                <label>Telefone:</label>
+                <input type="text" name="telefone">
+            </p>
+            <p>
+                <label>Mensagem:</label>
+                <textarea name="message" rows="5"></textarea>
+            </p>
+            <p>
+                <button class="btn btn-success" type="submit">Enviar</button>
+            </p>
+        </form>
+    </div>
 </div>

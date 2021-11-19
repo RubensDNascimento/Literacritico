@@ -11,6 +11,8 @@ const mongoose  = require('mongoose');
 const passport = require('passport');
 const {estaLogado} = require('./helpers/accessControl');
 require("./config/auth")(passport);
+const helpers = require('handlebars-helpers');
+const markdown = helpers.markdown();
 
 app.use(session({
     secret:"asidjadjaijdoa",
@@ -30,14 +32,17 @@ app.use((req, res, next) =>{
     next();
 })
 
+
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+
 
 app.engine('handlebars', handlebars({defaultLayout: 'main', runtimeOptions: {
     allowProtoPropertiesByDefault: true,
     allowProtoMethodsByDefault: true
-  }}));
+  }, helpers: markdown}));
 app.set('view engine', 'handlebars');
+
 
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost/literacritico").then(()=>{
@@ -72,7 +77,7 @@ app.get('/contato', estaLogado,  (req, res)=>{
 app.post("/", (req, res, next)=>{
 
     passport.authenticate("local", {
-        successRedirect: "/projeto",
+        successRedirect: "/",
         failureRedirect:"/",
         failureFlash: true
     })(req,res,next)

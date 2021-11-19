@@ -7,16 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Literacrítico</title>
 </head>
-<body>
+<body >
     {{>_header}}
-    <div class="container mt-4">
-        {{#if error}}
-            <div class="alert alert-danger">{{error}}</div>
-        {{else}}
-        {{/if}}
-        {{>_msg}}
-        {{{body}}}
+    <div class="bg-image img-thumbnail " style="background-image:url('img/Literacrítico-small2.png ');">
+        <div class=" img-thumbnail" style="background-color:rgba(13, 75, 93, 0.3);height: 100vh; ">
+            <div class="container mt-4">
+                {{#if error}}
+                    <div class="alert alert-danger">{{error}}</div>
+                {{else}}
+                {{/if}}
+                {{>_msg}}
+                {{{body}}}
+            </div>
+        </div>
     </div>
+
     {{>_footer}}
 </body>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>

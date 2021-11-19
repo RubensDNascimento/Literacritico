@@ -1,13 +1,29 @@
-<h2>Login</h2>
-<div class="card">
-    <div class="card-body">
-        <form action="/" method="post">
-            <label for="email">Email</label>
-                <input type="email" class="form-control" name="email" required>
-            <label for="senha">Senha</label>
-                <input type="password" class="form-control" name="senha" required>
-            <a class="nav-link" href="http://localhost:8080/users/register">Criar conta</a>
-            <button class="btn btn-success" type="submit">Entrar</button>
-        </form>
+<div class="card bg-light">
+    <div class="card-body row align-content-center">
+        <img src="img/literacritico-logo.png"  width="200px" style="padding: 0% 20%;" class="img-responsive ">
+        <p>O projeto se trata de uma especie de blog e rede social literario onde os administradores poderão publicar suas resenhas de suas ultimas 
+    leituras e os usuarios padrões terão acessos à essas resenhas</p>
     </div>
 </div>
+
+{{#if user}}
+    <div class="card">
+    <div class="card-body bg-light ">
+        <h3>Usuário Logado</h3>
+    </div>
+    </div>
+{{else}}
+    <div class="card col bg-light">
+        <h2 class="row align-self-center">Login</h2>
+        <div class="card-body">
+            <form action="/" method="post">
+                <label for="email">Email</label>
+                    <input type="email" class="form-control" name="email" required>
+                <label for="senha">Senha</label>
+                    <input type="password" class="form-control" name="senha" required>
+                <a class="nav-link" href="http://localhost:8080/users/register">Criar conta</a>
+                <button class="btn" type="submit"  style="background-color: #00CC99;">Entrar</button>
+            </form>
+        </div>
+    </div>
+{{/if}}

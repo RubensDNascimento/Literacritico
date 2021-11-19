@@ -103,17 +103,17 @@ router.post("/edit", (req,res)=>{
 
         user.save().then(()=>{
             req.flash("success_msg", "Usuário editado com sucesso!");
-            res.redirect("/projeto");
+            res.redirect("/");
         }).catch((err)=>{
             req.flash("error_msg", "Houve um erro ao salvar novo nome");
                 console.log(err)
-                res.redirect("/projeto");
+                res.redirect("/");
         })
 
     }).catch((err)=>{
         req.flash("error_msg", "Houve um erro ao editar nome");
             console.log(err)
-            res.redirect("/projeto");
+            res.redirect("/");
     })
 
 })
