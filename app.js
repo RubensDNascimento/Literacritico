@@ -12,6 +12,7 @@ const passport = require('passport');
 const {estaLogado} = require('./helpers/accessControl');
 require("./config/auth")(passport);
 const helpers = require('handlebars-helpers');
+const { inspect } = require('util');
 const markdown = helpers.markdown();
 
 app.use(session({
@@ -45,7 +46,7 @@ app.set('view engine', 'handlebars');
 
 
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost/literacritico").then(()=>{
+mongoose.connect("mongodb://localhost:27017/literacritico", { useNewUrlParser: true }).then(()=>{
     console.log("Conectado ao banco");
 }).catch((err)=>{
     console.log("Erro ao conectar ao banco:" + err);

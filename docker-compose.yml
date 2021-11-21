@@ -1,0 +1,22 @@
+version: '3.2'
+services:
+  web:
+    image: literacritico
+    build: ./
+    command: node app.js
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/usr/src/literacritico
+      - /usr/src/literacritico/node_modules
+    depends_on:
+      - "db"
+
+  db:
+    image: mongo:5.0
+    container_name: db
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - ./data:/data/db

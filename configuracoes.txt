@@ -6,11 +6,14 @@ Exemplo de Usuário Crítico(Administrador):
     Email: "rubens@123"
     Senha: "1234"
 
+Para Registrar um Usuário Crítico(Administrador):
+    Acessar rota: "/users/registerCritico"
+
 Para rodar o projeto precisa:
     -Rodar o servidor do Mongodb:
         -comando no CMD: "mongod"
     -Rodar o projeto:
-        -comando no CMD(na pasta do projeto): nodemon app.js
+        -comando no CMD(na pasta do projeto): npm start
 
 Informações extras:
     -Caminho para arquivos .md: "public\md"
