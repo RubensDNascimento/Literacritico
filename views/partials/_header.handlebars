@@ -24,12 +24,18 @@
           <a class="nav-link" href="http://localhost:8080/contato">Contato</a>
         </li>
         {{#if user.eCritico}}
-          <li class="nav-item">
-            <a class="nav-link" href="http://localhost:8080/admin/novaCritica" >Postar Critica</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="http://localhost:8080/users/registerCritico" >Criar novo perfil de crítico</a>
-          </li>
+
+          <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Área do Crítico
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="nav-link" href="http://localhost:8080/admin/novoLivro" >Novo Livro</a>
+          <a class="nav-link" href="http://localhost:8080/admin/novaCritica" >Postar Critica</a>
+          <a class="nav-link" href="http://localhost:8080/users/registerCritico" >Criar novo perfil de crítico</a>
+        </div>
+      </li>
+
         {{/if}}
         
         

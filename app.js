@@ -14,6 +14,7 @@ require("./config/auth")(passport);
 const helpers = require('handlebars-helpers');
 const { inspect } = require('util');
 const markdown = helpers.markdown();
+require("dotenv").config();
 
 app.use(session({
     secret:"asidjadjaijdoa",
@@ -46,7 +47,7 @@ app.set('view engine', 'handlebars');
 
 
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost:27017/literacritico", { useNewUrlParser: true }).then(()=>{
+mongoose.connect(process.env.DB, { useNewUrlParser: true }).then(()=>{
     console.log("Conectado ao banco");
 }).catch((err)=>{
     console.log("Erro ao conectar ao banco:" + err);
