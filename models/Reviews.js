@@ -1,25 +1,26 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const Book = new Schema({
+const Review = new Schema({
     titulo: {
         type: String,
         required: true
     },
-    autor: {
+    critico: {
         type: String,
         required: true
     },
-    ano: {
-        type: String,
-        required: Number
-    },
-    sinopse: {
+    conteudo: {
         type: String,
         required: true
     },
-    capa: {
+    resumo: {
         type: String
+    },
+    livro:{
+        type: Schema.Types.ObjectId,
+        ref: "book",
+        required: true
     },
     date:{
         type: Date,
@@ -27,4 +28,4 @@ const Book = new Schema({
     }
 })
 
-mongoose.model("book", Book);
+mongoose.model("review", Review);

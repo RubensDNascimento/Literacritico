@@ -1,12 +1,30 @@
 
 
-{{#each books}}
-    <div class="card">
-        <div class="card-body">
-            <h2>Livros</h2>
+<div class="card bg-light">
+    <h1  style="color: #0e97ce; align-self:center">Livros</h2>
+    {{#if user.eCritico}}
+        <a href="/admin/novoLivro" style="align-self:flex-end; margin-right:1rem"><button class="btn" style="background-color: #00CC99;">Novo Livro</button></a>
+    {{/if}}
+    {{#each books}}
+    <div class="card-body row align-items-start" style="border: 2px solid #0e97ce; border-radius: 5px; margin: 1rem;">
+        <div class="col-8" style="padding:0%;">
             <h4>{{titulo}}</h4>
+            <h5>{{autor}}</h5>
             <small>{{ano}}</small>
-            <a><img src={{capa}}></a>
+            <p style="white-space: pre-wrap;">{{sinopse}}</p>
+            {{#if ../user.eCritico}}
+                <a href="/admin/editarLivro/{{_id}}" style="margin-right:1rem;" ><button class="btn" style="background-color: #00CC99;">Editar Livro</button></a>
+                <form action="/admin/deleteBook" method="post">
+                    <input type="hidden" name="id" value="{{_id}}">
+                    <button style="color: #ff1500; background-color:transparent ;font-size:small;margin:0%; padding:0%; border:none;">Deletar</button> 
+                </form>
+            {{/if}}
+        </div>
+        <div class="col-4 ">
+            <a style="justify-self: center;"><img src={{capa}} width="250px" class="img-responsive row "></a>
         </div>
     </div>
-{{/each}}
+    {{else}}
+        <h4 class="mt-3" style=" align-self:center">Não há Livros cadastrados</h4>
+        {{/each}}
+</div>

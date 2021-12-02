@@ -1,4 +1,35 @@
-<h1>Nova Crítica</h1>
-<p>
-Aqui terá um formularia para criar um nova crítica
-</p>
+{{#each erros}}
+    <div class="alert alert-danger">{{texto}}</div>
+{{else}}
+
+{{/each}}
+
+<div class="card bg-light">
+    <div class="card-body">
+        <h3>Nova Crítica</h3>
+        <form action="/admin/novaCritica" method="POST">
+            <input type="hidden" name="critico" value="{{user.nome}}" required>
+            <label for="titulo">Título:</label>
+                <input type="text" name="titulo" class="form-control" required>
+            <label for="conteudo">Conteúdo:</label>
+                <textarea name="conteudo" class="form-control"></textarea>
+            <label for="resumo">Resumo:</label>
+                <textarea name="resumo" class="form-control"></textarea>
+            <label for="livro">Livro:</label>
+            <div class="input-group mb-3">
+                <select name="livro" class="form-select">
+                    {{#each book}}
+                        <option value="{{_id}}">{{titulo}}</option>
+                    {{else}}
+                        <option value="0">Nenhum livro encontrado</option>
+                    {{/each}}
+                </select>
+                    <a href="/admin/novoLivro" ><button type="button" class="btn" style="background-color: #00CC99;">Novo Livro</button></a>
+            </div>
+                    <a href="/admin/novaCritica"><button type="submit" class="btn "  style="background-color: #00CC99;">Nova Crítica</button>
+            
+
+            
+        </form>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+{{#each erros}}
+    <div class="alert alert-danger">{{texto}}</div>
+{{else}}
+
+{{/each}}
+
+<div class="card bg-light">
+    <div class="card-body">
+        <h3>Editar livro</h3>
+        <form action="/admin/editarLivro" method="post"  enctype="multipart/form-data">
+            <input type="hidden" name="id" value="{{book._id}}">
+            <label for="titulo">Título:</label>
+                <input type="text" name="titulo" class="form-control" value="{{book.titulo}}" required>
+            <label for="autor">Autor:</label>
+                <input type="text" name="autor" class="form-control" value="{{book.autor}}"  required>
+            <label for="ano">Ano de publicação:</label>
+                <input type="number"  step="1" name="ano" class="form-control" value="{{book.ano}}"  required>
+            <label for="sinopse">Sinopse:</label>
+                <textarea name="sinopse" class="form-control">{{book.sinopse}}</textarea>    
+                <div class=" row align-items-start">
+                    <div class="col-8">
+                        <label for="capa">Capa:</label>
+                        <input type="file" class="form-control" id="inputGroupFile03" name="capa" accept="image/png, image/jpeg" value=""> 
+                        <input type="hidden" name="capaAtual" value="{{book.capa}}">
+                        <button type="submit" class="btn "  style="background-color: #00CC99; margin-top: 15px;">Editar Livro</button>
+                    </div>
+                    <div class="col-2" style="padding: .375rem .75rem;">
+                        <label for="capa">Capa atual:</label>
+                        <img src="{{book.capa}}" width="150px" class="img-responsive" >
+                    </div>
+                </div>
+            
+        </form>
+    </div>
+</div>

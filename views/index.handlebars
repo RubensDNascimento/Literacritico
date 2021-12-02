@@ -7,10 +7,14 @@
 </div>
 
 {{#if user}}
-    <div class="card">
-    <div class="card-body bg-light ">
-        <h3>Usuário Logado</h3>
-    </div>
+    <div class="card bg-light">
+        <h1  style="color: #0e97ce; align-self:center">Críticas</h2>
+        {{#if user.eCritico}}
+            <a href="/admin/novaCritica" style="align-self:flex-end; margin-right:1rem"><button class="btn" style="background-color: #00CC99;">Nova Crítica</button></a>
+        {{/if}}
+        <div class="card-body ">
+            <h3>Usuário Logado</h3>
+        </div>
     </div>
 {{else}}
     <div class="card col bg-light">
