@@ -3,9 +3,9 @@
 {{else}}
 
 {{/each}}
-<h2>Editar nome</h2>
 <div class="card">
     <div class="card-body">
+        <h2>Editar nome</h2>
         <form action="/users/edit" method="post">
             <input type="hidden" name="email" value="{{user.email}}">
             <label for="nome">Nome</label>

@@ -1,17 +1,18 @@
 const express = require('express');
 const router = express.Router();
-const {eCritico} = require("../helpers/accessControl")
+const {eCritico, estaLogado} = require("../helpers/accessControl")
 const mongoose = require('mongoose');
 require("../models/Book")
 const Book = mongoose.model("book");
 var fs = require('fs');
 var path = require('path');
 
+
 var multer = require('multer');
 
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, './uploads/')
+        cb(null, './public/uploads/')
     },
     filename: (req, file, cb) => {
         cb(null, new Date().getTime() + file.originalname)
@@ -24,7 +25,7 @@ var upload = multer({ storage: storage });
 router.get('/', eCritico,  (req, res)=>{
     res.render("admin/index")
 })
-router.get('/livros', eCritico,  (req, res)=>{
+router.get('/livros', estaLogado,  (req, res)=>{
     Book.find().then((books)=>{
         
     res.render("admin/bookListing", {books: books})
@@ -62,6 +63,8 @@ router.post('/novoLivro', upload.single('capa'), (req, res, next) => {
                 console.log("Já existe um livro com o mesmo título")
                 res.redirect("/novoLivro")
             }else{
+
+                req.file.path = req.file.path.replace(/\\/g, "/").substring("public".length);
                 
                 const newBook = new Book({
                     titulo: req.body.titulo,
