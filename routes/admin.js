@@ -2,8 +2,10 @@ const express = require('express');
 const router = express.Router();
 const {eCritico, estaLogado} = require("../helpers/accessControl")
 const mongoose = require('mongoose');
-require("../models/Book")
+require("../models/Book");
+require("../models/Reviews");
 const Book = mongoose.model("book");
+const Review = mongoose.model("review");
 var fs = require('fs');
 var path = require('path');
 var pathCapa ;
@@ -184,8 +186,8 @@ router.post("/deleteBook", (req, res)=>{
     })
 })
 
-router.get("/novaCritica",eCritico,(req, res)=>{
-    Book.find().then((book)=>{
+router.get("/novaCritica/:id",eCritico,(req, res)=>{
+    Book.findOne({_id:req.params.id}).then((book)=>{
     res.render("critica/newReview", {book: book})
     }).catch((err)=>{
         req.flash("error_msg", "Houve um erro ao carregar a formulario")
@@ -193,7 +195,15 @@ router.get("/novaCritica",eCritico,(req, res)=>{
         res.redirect("/")
     })
 })
-
+router.get("/novaCritica",eCritico,(req, res)=>{
+    Book.find().then((books)=>{
+    res.render("critica/newReview", {books: books})
+    }).catch((err)=>{
+        req.flash("error_msg", "Houve um erro ao carregar a formulario")
+        console.log(err)
+        res.redirect("/")
+    })
+})
 router.post("/novaCritica", eCritico, (req, res)=>{
     var erros =[]
     if(!req.body.titulo || typeof req.body.titulo == undefined || req.body.titulo == null){
@@ -221,7 +231,27 @@ router.post("/novaCritica", eCritico, (req, res)=>{
 
     if(erros.length > 0){
             res.redirect("/admin/novaCritica")
-        }else{}
+    }else{
+        const newReview = new Review({
+            titulo: req.body.titulo,
+            critico: req.body.critico,
+            conteudo: req.body.conteudo,
+            resumo: req.body.resumo,
+            livro: req.body.livro
+        })
+        console.log(newReview)
+        
+        newReview.save().then(()=>{
+            req.flash("success_msg", "Crítica criado com sucesso!");
+            res.redirect("/");
+            console.log("Crítica criado com sucesso!")
+            console.log(newReview)
+        }).catch((err)=>{
+            req.flash("error_msg", "Não foi possivel criar a Crítica");
+            console.log("Não foi possivel criar a Crítica" + err)
+            res.redirect("/");
+        })
+    }
 })
 
 module.exports = router; 

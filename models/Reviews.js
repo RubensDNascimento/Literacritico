@@ -19,7 +19,7 @@ const Review = new Schema({
     },
     livro:{
         type: Schema.Types.ObjectId,
-        ref: "book",
+        ref: 'book',
         required: true
     },
     date:{

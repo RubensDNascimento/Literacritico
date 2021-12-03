@@ -18,7 +18,10 @@
             <label for="livro">Livro:</label>
             <div class="input-group mb-3">
                 <select name="livro" class="form-select">
-                    {{#each book}}
+                    {{#if book}}
+                        <option value="{{book._id}}">{{book.titulo}}</option>
+                    {{/if}}
+                    {{#each books}}
                         <option value="{{_id}}">{{titulo}}</option>
                     {{else}}
                         <option value="0">Nenhum livro encontrado</option>

@@ -15,6 +15,10 @@ const helpers = require('handlebars-helpers');
 const { inspect } = require('util');
 const markdown = helpers.markdown();
 require("dotenv").config();
+require("./models/Book");
+require("./models/Reviews");
+const Book = mongoose.model("book");
+const Review = mongoose.model("review");
 
 app.use(session({
     secret:"asidjadjaijdoa",
@@ -58,7 +62,13 @@ app.use(express.static(path.join(__dirname,"public")));
 
 
 app.get('/', (req, res)=>{
-    res.render('index')
+    Review.find().populate('livro').sort({data: "desc"}).then((reviews)=>{
+        res.render('index', {reviews:reviews})
+    }).catch((err)=>{
+        req.flash("error_msg", "Não foi carregar as Críticas");
+        console.log("Não foi possivel criar a Crítica" + err)
+        res.redirect("/");
+    })
 })
 app.get('/posts', estaLogado, (req, res)=>{
     res.send('Lista de posts')

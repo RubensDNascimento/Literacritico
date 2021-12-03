@@ -13,6 +13,13 @@
             <a href="/admin/novaCritica" style="align-self:flex-end; margin-right:1rem"><button class="btn" style="background-color: #00CC99;">Nova Crítica</button></a>
         {{/if}}
         <div class="card-body ">
+            {{#each reviews}}
+                <h4>{{titulo}}</h4>
+                <h5>{{critico}}</h5>
+                <small>{{resumo}}</small>
+                <small>{{livro.titulo}}</small>
+                
+            {{/each}}
             <h3>Usuário Logado</h3>
         </div>
     </div>

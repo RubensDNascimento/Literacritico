@@ -14,6 +14,7 @@
             <p style="white-space: pre-wrap;">{{sinopse}}</p>
             {{#if ../user.eCritico}}
                 <a href="/admin/editarLivro/{{_id}}" style="margin-right:1rem;" ><button class="btn" style="background-color: #00CC99;">Editar Livro</button></a>
+                <a href="/admin/novaCritica/{{_id}}" style="margin-right:1rem;" ><button class="btn" style="background-color: #00CC99;">Adicionar crítica</button></a>
                 <form action="/admin/deleteBook" method="post">
                     <input type="hidden" name="id" value="{{_id}}">
                     <button style="color: #ff1500; background-color:transparent ;font-size:small;margin:0%; padding:0%; border:none;">Deletar</button> 
